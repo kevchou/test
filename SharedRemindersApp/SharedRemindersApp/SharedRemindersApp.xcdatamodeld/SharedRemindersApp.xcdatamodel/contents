@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <!--
+        Core Data Model for Shared Reminders App
+
+        This model defines a single entity: ReminderItem
+
+        IMPORTANT CloudKit Requirements:
+        - Each entity that will sync must have a unique identifier (we use 'id')
+        - We use NSCloudKitMirroringDelegate which automatically syncs to CloudKit
+        - The 'createdAt' timestamp helps with conflict resolution
+    -->
+    <entity name="ReminderItem" representedClassName="ReminderItem" syncable="YES" codeGenerationType="class">
+        <!-- Unique identifier for each reminder (required for CloudKit) -->
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+
+        <!-- The reminder text/title -->
+        <attribute name="title" optional="NO" attributeType="String" defaultValueString=""/>
+
+        <!-- Whether the reminder is completed -->
+        <attribute name="isCompleted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+
+        <!-- When the reminder was created (helps with sorting and conflict resolution) -->
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+
+        <!-- When the reminder was last modified -->
+        <attribute name="modifiedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+</model>
